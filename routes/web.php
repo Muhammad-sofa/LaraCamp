@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
+Route::get('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
 
 // Route::get('checkout-success', function () {
 //     return view('checkout_success');
