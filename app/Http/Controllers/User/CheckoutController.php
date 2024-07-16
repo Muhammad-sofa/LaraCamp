@@ -105,6 +105,6 @@ class CheckoutController extends Controller
 
     public function Success()
     {
-        return view('success_checkout');
+        return view('checkout.success');
     }
 }
