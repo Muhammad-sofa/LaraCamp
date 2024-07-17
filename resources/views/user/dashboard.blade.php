@@ -1,80 +1,58 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="checkout">
+<section class="dashboard my-5">
     <div class="container">
-        <div class="row text-center pb-70">
-            <div class="col-lg-12 col-12 header-wrap">
+        <div class="row text-left">
+            <div class=" col-lg-12 col-12 header-wrap mt-4">
                 <p class="story">
-                    YOUR FUTURE CAREER
+                    DASHBOARD
                 </p>
-                <h2 class="primary-header">
-                    Start Invest Today
+                <h2 class="primary-header ">
+                    My Bootcamps
                 </h2>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-9 col-12">
-                <div class="row">
-                    <div class="col-lg-5 col-12">
-                        <div class="item-bootcamp">
-                            <img src="{{ asset('images/item_bootcamp.png') }}" alt="" class="cover">
-                            <h1 class="package">
-                                GILA BELAJAR
-                            </h1>
-                            <p class="description">
-                                Bootcamp ini akan mengajak Anda untuk belajar penuh mulai dari pengenalan dasar
-                                sampai
-                                membangun sebuah projek asli
+        <div class="row my-5">
+            <table class="table">
+                <tbody>
+                    @forelse ($checkouts as $checkout)
+                    <tr class="align-middle">
+                        <td width="18%">
+                            <img src="/assets/images/item_bootcamp.png" height="120" alt="">
+                        </td>
+                        <td>
+                            <p class="mb-2">
+                                <strong>{{ $checkout->Camp->title }}</strong>
                             </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-12"></div>
-                    <div class="col-lg-6 col-12">
-                        <form action="#" class="basic-form">
-                            <div class="mb-4">
-                                <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-4">
-                                <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-4">
-                                <label for="exampleInputEmail1" class="form-label">Occupation</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-4">
-                                <label for="exampleInputEmail1" class="form-label">Card Number</label>
-                                <input type="number" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-5">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <label for="exampleInputEmail1" class="form-label">Expired</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <label for="exampleInputEmail1" class="form-label">CVC</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp">
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="w-100 btn btn-primary">Pay Now</button>
-                            <p class="text-center subheader mt-4">
-                                <img src="{{ assset('images/ic_secure.svg') }}" alt=""> Your payment is secure and
-                                encrypted.
+                            <p>
+                                {{ $checkout->created_at->format('M d, Y') }}
                             </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        </td>
+                        <td>
+                            <strong>${{ $checkout->Camp->price }}</strong>
+                        </td>
+                        <td>
+                            @if ($checkout->is_paid)
+                            <strong class="text-success">Payment Success</strong>
+                            @else
+                            <strong>Waiting for Payment</strong>
+                        </td>
+                        <td>
+                            <a href="https://wa.me/6281234567890?Hi, I Want to ask about class {{ $checkout->Camp->title }}" class="btn btn-primary">
+                                Contact Support
+                            </a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5">
+                            <h3>No Data</h3>
+                        </td> 
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
