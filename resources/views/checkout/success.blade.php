@@ -1,17 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+@section('content')
+    <section class="checkout">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-12 col-12">
+                    <img src="{{ asset('images/ill_register.png') }}" height="400" class="mb-5" alt="">
+                </div>
+                <div class="col-lg-12 col-12 header-wrap mt-4">
+                    <p class="story">
+                        WHATA A DAY!
+                    </p>
+                    <h2 class="primary-header">
+                        Berhasil Checkout
+                    </h2>
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">
+                        My Dashboard
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+@endsection
