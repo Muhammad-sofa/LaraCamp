@@ -14,12 +14,13 @@
             </div>
         </div>
         <div class="row my-5">
+            @include('components.alert')
             <table class="table">
                 <tbody>
                     @forelse ($checkouts as $checkout)
                     <tr class="align-middle">
                         <td width="18%">
-                            <img src="/assets/images/item_bootcamp.png" height="120" alt="">
+                            <img src="{{ asset('images/item_bootcamp.png') }}" height="120" alt="">
                         </td>
                         <td>
                             <p class="mb-2">
@@ -37,6 +38,7 @@
                             <strong class="text-success">Payment Success</strong>
                             @else
                             <strong>Waiting for Payment</strong>
+                            @endif
                         </td>
                         <td>
                             <a href="https://wa.me/6281234567890?Hi, I Want to ask about class {{ $checkout->Camp->title }}" class="btn btn-primary">
