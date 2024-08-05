@@ -43,4 +43,11 @@ class DiscountController extends Controller
         $request->session()->flash('success', "Discount {$discount->name} has been updated");
         return redirect(route('admin.discount.index'));
     }
+
+    public function destroy(Request $request, Discount $discount)
+    {
+        $discount->delete();
+        $request->session()->flash('error', "Discount {$discount->name} has been deleted");
+        return redirect(route('admin.discount.index'));
+    }
 }
