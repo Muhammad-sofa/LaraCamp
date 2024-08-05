@@ -11,7 +11,10 @@ class DiscountController extends Controller
 {
     public function index()
     {
-        return view('admin.discount.index');
+        $discounts = Discount::all();
+        return view('admin.discount.index', [
+            'dicounts' => $discounts
+        ]);
     }
 
     public function create()
