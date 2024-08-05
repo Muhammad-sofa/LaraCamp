@@ -11,4 +11,9 @@ class DiscountController extends Controller
     {
         return view('admin.discount.index');
     }
+
+    public function create()
+    {
+        return view('admin.discount.create');
+    }
 }

@@ -15,7 +15,7 @@ class CheckoutController extends Controller
           $checkout->is_paid = true;
           $checkout->save();
 
-          // Send email to User
+          // Send email to User ke User Sebelumnya
           Mail::to($checkout->user->email)->send(new Paid($checkout));
           $request->session()->flash('success', "Checkout with ID {$checkout->id} has been updated.");
           return redirect(route('admin.dashboard'));
